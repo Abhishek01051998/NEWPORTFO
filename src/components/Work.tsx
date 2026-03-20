@@ -5,35 +5,34 @@ import { MdArrowBack, MdArrowForward } from "react-icons/md";
 
 const projects = [
   {
-    title: "Solid Starters",
-    category: "Low-Code Platform",
-    tools: "Angular, Next.js, NestJS, MongoDB",
-    image: "/images/Solidx.png",
+    title: "AWS Redshift Serverless",
+    category: "Cloud Infrastructure",
+    tools: "React, Java, AWS (Secrets Manager, S3, DynamoDB)",
+      image: "/images/aws-redshift.svg",
+    link: "https://aws.amazon.com/redshift/",
   },
   {
-    title: "Radix",
-    category: "E-Commerce",
-    tools: "Angular, Next.js, NestJS, CMS",
-    image: "/images/radix.png",
+    title: "LifeLine SOS",
+    category: "Blood Donation Management",
+    tools: "Node.js, Express, MongoDB, React, Tailwind",
+      image: "/images/lifeline.svg",
+    link: "https://blood-donate-mhv5.vercel.app/",
   },
   {
-    title: "Bond Cancellation",
-    category: "Import-Export Automation",
-    tools: "Angular, Next.js, NestJS, Workflows",
-    image: "/images/bond.png",
+    title: "WhatsApp Clone",
+    category: "Real-time Messaging App",
+    tools: "Next.js, Socket.io, Node.js, PostgreSQL",
+      image: "/images/whatsapp.svg",
+    link: "https://whatsapp-v2-2.vercel.app/",
   },
   {
-    title: "Sapphire",
-    category: "CRM Platform",
-    tools: "AngularJS, NestJS, PostgreSQL",
-    image: "/images/sapphire.png",
+    title: "Real-Time 3D Editor",
+    category: "Design Tool",
+    tools: "React, Three.js, WebGL",
+      image: "/images/3d-editor.svg",
+    link: "https://github.com/Abhishek01051998",
   },
-  {
-    title: "Mpro",
-    category: "Insurance Platform",
-    tools: "React.js, Node.js, Microservices",
-    image: "/images/Maxlife.png",
-  },
+
 ];
 
 const Work = () => {
@@ -51,14 +50,12 @@ const Work = () => {
   );
 
   const goToPrev = useCallback(() => {
-    const newIndex =
-      currentIndex === 0 ? projects.length - 1 : currentIndex - 1;
+    const newIndex = currentIndex === 0 ? projects.length - 1 : currentIndex - 1;
     goToSlide(newIndex);
   }, [currentIndex, goToSlide]);
 
   const goToNext = useCallback(() => {
-    const newIndex =
-      currentIndex === projects.length - 1 ? 0 : currentIndex + 1;
+    const newIndex = currentIndex === projects.length - 1 ? 0 : currentIndex + 1;
     goToSlide(newIndex);
   }, [currentIndex, goToSlide]);
 
@@ -70,7 +67,6 @@ const Work = () => {
         </h2>
 
         <div className="carousel-wrapper">
-          {/* Navigation Arrows */}
           <button
             className="carousel-arrow carousel-arrow-left"
             onClick={goToPrev}
@@ -88,7 +84,6 @@ const Work = () => {
             <MdArrowForward />
           </button>
 
-          {/* Slides */}
           <div className="carousel-track-container">
             <div
               className="carousel-track"
@@ -105,13 +100,20 @@ const Work = () => {
                       </div>
                       <div className="carousel-details">
                         <h4>{project.title}</h4>
-                        <p className="carousel-category">
-                          {project.category}
-                        </p>
+                        <p className="carousel-category">{project.category}</p>
                         <div className="carousel-tools">
                           <span className="tools-label">Tools & Features</span>
                           <p>{project.tools}</p>
                         </div>
+                        {/* New Link Button */}
+                        <a 
+                          href={project.link} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="project-link-btn"
+                        >
+                          View Project
+                        </a>
                       </div>
                     </div>
                     <div className="carousel-image-wrapper">
@@ -123,13 +125,13 @@ const Work = () => {
             </div>
           </div>
 
-          {/* Dot Indicators */}
           <div className="carousel-dots">
             {projects.map((_, index) => (
               <button
                 key={index}
-                className={`carousel-dot ${index === currentIndex ? "carousel-dot-active" : ""
-                  }`}
+                className={`carousel-dot ${
+                  index === currentIndex ? "carousel-dot-active" : ""
+                }`}
                 onClick={() => goToSlide(index)}
                 aria-label={`Go to project ${index + 1}`}
                 data-cursor="disable"
